@@ -1,5 +1,43 @@
 #include "utils.h"
 
+int copy_abo(void* dest, const void* source){
+
+
+	ElemArbol *d, *s;
+
+	if(dest == NULL || source == NULL){
+		return ERROR_NULL_POINTER;
+	}
+
+	d = (ElemArbol*) dest;
+	s = (ElemArbol*) source;
+	
+	strcpy(d->ip,s->ip);
+	
+	if(s->dominio != NULL){
+		strcpy(d->dominio, s->dominio);
+	}
+
+	d->SubArbol=s->SubArbol;
+
+	return OK;
+}
+
+
+void destroy_abo(void* data){
+
+	return ;
+}
+
+int compare_abo(const void* a, const void* b){
+
+	ElemArbol *aboA, *aboB;
+
+	aboA = (ElemArbol*) a;
+	aboB = (ElemArbol*) b;
+
+	return (strcmp(aboA->dominio,aboB->dominio));
+}
 
 char* strdup(const char* s){ /*Copia string*/
 

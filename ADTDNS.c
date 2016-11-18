@@ -18,12 +18,12 @@ int ADTDNS_crear(ADTDNS* dns, int tamanio,int argc,const char ** argv){
 		return ERROR_NULL_POINTER;
 	}
 
-		if((st = ADTDNS_establecer_operacion(dns,op))!= OK){
+	if((st = ADTDNS_establecer_operacion(dns,op))!= OK){
 		return st;
 	}
 
-
-		if((st = ABO_Crear(&abodns,sizeof(TABO), ))!= RES_OK){
+	
+	if((st = ABO_Crear(&abodns,sizeof(TABO), ))!= RES_OK){
 		ADTDNS_destruir(ws);
 		return st;
 	}
