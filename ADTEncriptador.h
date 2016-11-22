@@ -7,15 +7,14 @@
 #include "errors.h"
 #include "utils.h"
 
-
 typedef struct{
 	t_list diccionarios;
-	char * mensaje;
-	
 }ADTEncriptador;
 
-
-
+typedef struct{
+	char ip[MAX_LONG_IP];
+	char Diccionario[DICCIONARIO];
+}Diccionario_t;
 
 
 
@@ -26,16 +25,6 @@ int ADTWS_Op_set_format(ADTWS_Op*);
 int ADTWS_Op_set_operation_time(ADTWS_Op*);
 int ADTWS_Op_set_response(ADTWS_Op*, char*);
 
-char* ADTWS_Op_get_operation(ADTWS_Op);
-char* ADTWS_Op_get_operation_time(ADTWS_Op);
-char* ADTWS_Op_get_request(ADTWS_Op);
-char* ADTWS_Op_get_format(ADTWS_Op);
-char* ADTWS_Op_get_response(ADTWS_Op);
-
-
-int ADTWS_Op_get_data(char**, const char*, ADTWS_Op);
-int ADTWS_Op_get_method(char**, ADTWS_Op);
-int ADTWS_Op_get_host(char**, ADTWS_Op);
 
 
 int get_local_time(char**);

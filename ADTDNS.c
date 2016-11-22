@@ -10,7 +10,7 @@ int get_file_path(char**, const char*, int);
 /*------------------------------------------*/
 
 
-int ADTDNS_crear(ADTDNS* dns, int tamanio,int argc,const char ** argv){
+int ADTDNS_crear(ADTDNS* dns, int tamanio){
 	int st;
 	TABO abodns;
 
@@ -58,7 +58,7 @@ int rellenar_abo(TABO* abodns, const char* dnstxt){
 	ElemArbol abo;
 	FILE* fp;
 	char ip[MAX_LONG_IP]; 
-	char str, *temp, **fieldv;
+	char str[MAX_LINEA], *temp, **fieldv;
 	int fieldc,st;
 
 
@@ -71,7 +71,7 @@ int rellenar_abo(TABO* abodns, const char* dnstxt){
 		return ERROR_OPENING_FILE;
 	}
 
-	while((fgets(str,sizeof(str),fp))!= NULL){
+	while((fgets(str,MAX_LINEA,fp))!= NULL){
 		if(!strcmp(str,"\n")) break;
 		str[strcspn(str,"\n")] = 0;
 		if((st = dividir_dominio_string(str,&fieldv,&fieldc,ip))!= OK){		
@@ -81,13 +81,14 @@ int rellenar_abo(TABO* abodns, const char* dnstxt){
 		for((i=fieldc);i>0;i--){
 			strcpy(abo.dominio,fieldc[i]);
 			if(i==1) strcpy(abo.ip,ip);
-			if((st = straight_list_insert(abodns,(void*)abo))!= TRUE){
+			if((st = ABO_insertar(abodns,(void*)abo))!= TRUE){
 				destroy_string_array(fieldv,fieldc);
 				free(fieldv);
 				fieldv = NULL;
 				fclose(fp);
 				return st;
 			}		
+			if((st = ABO_Crear(&abo.SubArbol,(void *) !=
 		}
 	}
 

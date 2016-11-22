@@ -8,25 +8,19 @@
 #include "errors.h"
 #include "utils.h"
 
-typedef struct{
-	ADTEncriptador encriptador;
+typedef struct{	
 	TABO ArbolDNS;
-	char * urlOrigen;
-	char * ipOringen;
-	char * urlDestino;
-	char * ipDestino;
-	char * mensaje;
 }ADTDNS;
 
 typedef struct{
 	char * dominio;
 	char ip[MAX_LONG_IP];
 	TABO SubArbolDNS;
-}ElemArbol;
+}Domain_t;
 
 int log_operation(ADTWS);
 
-int ADTDNS_crear(ADTDNS*, int ,int ,const char **);
+int ADTDNS_crear(ADTDNS*, int);
 int ADTDNS_destruir(ADTDNS*);
 int ADTDNS_agregar_dominio(ADTDNS*,char*,void *);
 int ADTDNS_obtener_valor(ADTDNS,char*,void *);
