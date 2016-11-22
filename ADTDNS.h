@@ -13,7 +13,7 @@ typedef struct{
 }ADTDNS;
 
 typedef struct{
-	char * dominio;
+	char *tag;
 	char ip[MAX_LONG_IP];
 	TABO SubArbolDNS;
 }Domain_t;
