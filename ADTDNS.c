@@ -65,7 +65,11 @@ int buscar_dominio(TAB Arbol, char * dominio){
 	}	
 
 	tag=strtok(dominio,delim);
+
+	AB_MoverCte(&Arbol,RAIZ);
 	
+	AB_ElemCte(Arbol,(void *)&dom);	
+
 	if(buscar_tag(Arbol, dom, tag) == FALSE){
 		return FALSE;
 	}
