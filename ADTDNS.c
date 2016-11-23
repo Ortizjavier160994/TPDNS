@@ -41,50 +41,77 @@ int ADTDNS_crear(ADTDNS* dns, int tamanio){
 }
 
 int ADTDNS_existe_dominio(ADTDNS arbol,char * dominio){
-	char * aux, * tag, delim='.'; 
-	int cmp;
-	Domain_t dom;
+	char * aux;
 
 	aux=strdup(dominio);
 	
 	invertir(aux);
 
-	if(AB_MoverCte(&arbol,RAIZ))==FALSE){
-		return FALSE;	
-	}
-	
-	AB_ElemCte(arbol,(void *)&dom);
-
-	while(tag=(strtok(aux,delim)){
-
-		while((cmp=strcmp(tag,dom.tag) != 0)){
-			if(cmp>0){
-				if(AB_MoverCte(&dom,DER)==FALSE){
-					return FALSE;
-				}else{
-					AB_ElemCte(dom,(void *)&dom);
-				}
-			}
-			else{
-			}
-				if(AB_MoverCte(&dom,IZQ)==FALSE){
-					return FALSE;
-				}else{
-					AB_ElemCte(dom,(void *)&dom);
-				}
-		}		
-		
-		if(AB_MoverCte(&(dom.SubArbol),RAIZ))==FALSE){
-			return FALSE;	
-		}
-	
-		AB_ElemCte(dom.SubArbol,(void *)&dom);	
-	
+	if(buscar_dominio(arbol.ArbolDNS,aux) == FALSE){
+		return FALSE;
 	}
 
 	return TRUE;
 
 }
+
+/* Falta cortar el string dominio y mandarlo por recursión. */
+int buscar_dominio(TAB Arbol, char * dominio){
+	char * tag, delim= '.', * aux;
+	Domain_t dom;
+
+	if(!dominio){
+		return TRUE;
+	}	
+
+	tag=strtok(dominio,delim);
+	
+	if(buscar_tag(Arbol, dom, tag) == FALSE){
+		return FALSE;
+	}
+	
+	buscar_dominio(Arbol.Subarbol, )
+}
+
+/* Busca en Arbol el tag (TRUE si existe y FALSE si no). Si es TRUE devuelve el dom donde se encuentra el tag. */
+int buscar_tag(TAB Arbol, Domain_t dom, char * tag){
+	int cmp;
+
+	if((cmp=strcmp(tag,dom.tag) != 0)){
+		if(cmp>0){
+			if(AB_MoverCte(&Arbol,DER)==FALSE){
+				return FALSE;
+			}		
+		}
+		else{	
+			if(AB_MoverCte(&Arbol,IZQ)==FALSE){
+				return FALSE;
+			}
+		}
+		AB_ElemCte(Arbol,(void *)&dom);
+		return buscar_tag(arbol,dom,tag);
+
+	}
+	
+	return TRUE;
+	
+}
+
+
+int ADTDNS_eliminar_dominio(ADTDNS* ,char*){
+	
+
+
+
+
+
+
+
+
+
+}
+
+
 
 /*--------------------------------------------FUNCIONES PRIVADAS--------------------------------------------*/
 

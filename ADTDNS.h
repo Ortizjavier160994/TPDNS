@@ -9,13 +9,13 @@
 #include "utils.h"
 
 typedef struct{	
-	TABO ArbolDNS;
+	TAB ArbolDNS;
 }ADTDNS;
 
 typedef struct{
 	char *tag;
 	char ip[MAX_LONG_IP];
-	TABO SubArbolDNS;
+	TAB SubArbolDNS;
 }Domain_t;
 
 int log_operation(ADTWS);
