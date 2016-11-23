@@ -40,18 +40,14 @@ int ADTDNS_crear(ADTDNS* dns, int tamanio){
 
 }
 
-int ADTDNS_existe_dominio(ADTDNS arbol,char * dominio){
+int ADTDNS_existe_dominio(ADTDNS dns,char * dominio){
 	char * aux;
 
 	aux=strdup(dominio);
 	
 	invertir(aux);
 
-	if(buscar_dominio(arbol.ArbolDNS,aux) == FALSE){
-		return FALSE;
-	}
-
-	return TRUE;
+	return buscar_dominio(dns.ArbolDNS,aux);
 
 }
 
@@ -77,7 +73,8 @@ int buscar_dominio(TAB Arbol, char * dominio){
 	buscar_dominio(dom.Subarbol, )
 }
 
-/* Busca en Arbol el tag (TRUE si existe y FALSE si no). Si es TRUE devuelve el dom donde se encuentra el tag. */
+/* Busca en Arbol el tag (TRUE si existe y FALSE si no). Si es TRUE devuelve el dom donde se encuentra el tag.
+También se pasa en dom la raiz del arbol. */
 int buscar_tag(TAB Arbol, Domain_t dom, char * tag){
 	int cmp;
 
@@ -93,7 +90,7 @@ int buscar_tag(TAB Arbol, Domain_t dom, char * tag){
 			}
 		}
 		AB_ElemCte(Arbol,(void *)&dom);
-		return buscar_tag(arbol,dom,tag);
+		return buscar_tag(Arbol,dom,tag);
 
 	}
 	
