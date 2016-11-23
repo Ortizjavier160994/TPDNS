@@ -52,6 +52,25 @@ char* strdup(const char* s){ /*Copia string*/
 	return d;
 }
 
+void invertir(char * palabra){
+	int lenght,i,x;
+	char aux[50];
+
+	lenght= strlen(palabra);
+
+	x=lenght;
+
+	aux[lenght]=0;
+
+	for (i=0; i<lenght ; i++){
+		aux[i]= palabra[x-1];
+		x--;
+	}
+
+	strcpy (palabra,aux);
+	
+}
+
 int dividir_dominio_string(char* str, char*** fieldv, int* fieldc, char ip[MAX_LONG_IP]){ 
 
 	char *p, *q, *r, *s;

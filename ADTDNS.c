@@ -40,6 +40,51 @@ int ADTDNS_crear(ADTDNS* dns, int tamanio){
 
 }
 
+int ADTDNS_existe_dominio(ADTDNS arbol,char * dominio){
+	char * aux, * tag, delim='.'; 
+	int cmp;
+	Domain_t dom;
+
+	aux=strdup(dominio);
+	
+	invertir(aux);
+
+	if(AB_MoverCte(&arbol,RAIZ))==FALSE){
+		return FALSE;	
+	}
+	
+	AB_ElemCte(arbol,(void *)&dom);
+
+	while(tag=(strtok(aux,delim)){
+
+		while((cmp=strcmp(tag,dom.tag) != 0)){
+			if(cmp>0){
+				if(AB_MoverCte(&dom,DER)==FALSE){
+					return FALSE;
+				}else{
+					AB_ElemCte(dom,(void *)&dom);
+				}
+			}
+			else{
+			}
+				if(AB_MoverCte(&dom,IZQ)==FALSE){
+					return FALSE;
+				}else{
+					AB_ElemCte(dom,(void *)&dom);
+				}
+		}		
+		
+		if(AB_MoverCte(&(dom.SubArbol),RAIZ))==FALSE){
+			return FALSE;	
+		}
+	
+		AB_ElemCte(dom.SubArbol,(void *)&dom);	
+	
+	}
+
+	return TRUE;
+
+}
 
 /*--------------------------------------------FUNCIONES PRIVADAS--------------------------------------------*/
 
