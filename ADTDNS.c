@@ -70,7 +70,7 @@ int buscar_dominio(TAB Arbol, char * dominio){
 		return FALSE;
 	}
 	
-	buscar_dominio(Arbol.Subarbol, )
+	buscar_dominio(dom.Subarbol, )
 }
 
 /* Busca en Arbol el tag (TRUE si existe y FALSE si no). Si es TRUE devuelve el dom donde se encuentra el tag. */
