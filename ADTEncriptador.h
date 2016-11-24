@@ -1,5 +1,5 @@
-#ifndef ADTWS_OP__H__
-#define ADTWS_OP__H__ 
+#ifndef ADTEncriptador__H__
+#define ADTEncriptador__H__ 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 #include "utils.h"
 
 typedef struct{
-	t_list diccionarios;
+	TAB diccionarios;
 }ADTEncriptador;
 
 typedef struct{
@@ -18,12 +18,12 @@ typedef struct{
 
 
 
-int ADTEncriptador_create(ADTEncriptador*,const char **);
-int ADTEncriptador_destroy(ADTWS_Op*);
-int ADTEncriptador_establecer_mensaje(ADTWS_Op*,const char**);
-int ADTWS_Op_set_format(ADTWS_Op*);
-int ADTWS_Op_set_operation_time(ADTWS_Op*);
-int ADTWS_Op_set_response(ADTWS_Op*, char*);
+int ADTEncriptador_create(ADTEncriptador*, int);
+int ADTEncriptador_destroy(ADTEncriptador* );
+int ADTEncriptador_establecer_mensaje(ADTEncriptador, const char**);
+int ADTEncriptador_agregar_diccionario(ADTEncriptador*, char*);
+void ADTEncriptador_eliminar_diccionario(ADTEncriptador*, char*);
+
 
 
 
